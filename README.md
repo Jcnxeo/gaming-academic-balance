@@ -14,7 +14,6 @@
 ## 실행 방법
 
 GitHub Pages에 올리면 별도 서버 없이 바로 실행됩니다.
-사이트 주소 ; https://jcnxeo.github.io/gaming-academic-balance/
 
 로컬에서 확인할 때는 PowerShell에서 아래 명령을 실행한 뒤 브라우저에서 `http://localhost:8787/`을 열면 됩니다.
 
