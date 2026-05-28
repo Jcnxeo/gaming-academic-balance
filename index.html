@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>게임-학업 밸런스 분석기</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Gaming x Academic Data Lab</p>
+        <h1>게임-학업 밸런스 분석기</h1>
+      </div>
+      <div class="progress" aria-label="진행 단계">
+        <span class="dot is-active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </header>
+
+    <section class="stage is-active" data-stage="0">
+      <div class="stage-copy">
+        <p class="eyebrow">Step 1</p>
+        <h2>생활패턴을 입력하세요</h2>
+        <p>게임, 공부, 수면, 출석 습관을 입력하면 관련 학생 생활습관 자료와 비교해 현재 패턴에 가까운 유형을 보여줍니다.</p>
+      </div>
+
+      <form class="habit-form" id="habitForm">
+        <label>
+          <span>하루 게임시간</span>
+          <input type="number" id="gamingHours" min="0" max="12" step="0.1" value="4">
+        </label>
+        <label>
+          <span>자주 하는 게임 장르</span>
+          <select id="gamingGenre">
+            <option>FPS</option>
+            <option>RPG</option>
+            <option>Casual</option>
+          </select>
+        </label>
+        <label>
+          <span>하루 공부시간</span>
+          <input type="number" id="studyHours" min="0" max="14" step="0.1" value="5.5">
+        </label>
+        <label>
+          <span>하루 수면시간</span>
+          <input type="number" id="sleepHours" min="0" max="12" step="0.1" value="6.5">
+        </label>
+        <label>
+          <span>출석률</span>
+          <input type="number" id="attendance" min="0" max="100" step="0.1" value="100">
+        </label>
+      </form>
+
+      <div class="summary-grid single">
+        <article class="metric accent">
+          <span>매칭된 종합 유형</span>
+          <strong id="profileName">-</strong>
+          <small id="profileDesc">입력 후 표시됩니다</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="stage" data-stage="1">
+      <div class="stage-copy">
+        <p class="eyebrow">Step 2</p>
+        <h2>게임 장르별 리포트</h2>
+        <p>관련 학생 생활습관 자료의 통계에 따르면, 장르별로 게임시간과 스트레스, 중독점수, 성적 경향이 다르게 나타납니다.</p>
+      </div>
+      <div class="chart-panel">
+        <div class="chart-head">
+          <h3>장르별 평균 비교</h3>
+          <div class="chart-tabs" aria-label="그래프 지표 선택">
+            <button class="chart-tab is-active" type="button" data-chart="gaming">게임시간</button>
+            <button class="chart-tab" type="button" data-chart="stress">스트레스</button>
+            <button class="chart-tab" type="button" data-chart="addiction">중독점수</button>
+            <button class="chart-tab" type="button" data-chart="grades">성적</button>
+          </div>
+        </div>
+        <div class="bar-chart" id="genreChart"></div>
+      </div>
+      <div class="card-grid" id="genreCards"></div>
+    </section>
+
+    <section class="stage" data-stage="2">
+      <div class="stage-copy">
+        <p class="eyebrow">Step 3</p>
+        <h2>위험 신호 진단</h2>
+        <p>입력한 생활습관을 높은 성적을 받은 학생들의 공통 패턴과 비교해 위험, 보통, 양호로 나눕니다.</p>
+      </div>
+      <div class="risk-banner" id="riskBanner">
+        <strong>분석 대기</strong>
+        <span>생활패턴을 입력하면 위험도를 표시합니다.</span>
+      </div>
+      <div class="risk-list" id="riskList"></div>
+    </section>
+
+    <section class="stage" data-stage="3">
+      <div class="stage-copy">
+        <p class="eyebrow">Step 4</p>
+        <h2>상위권 패턴과 맞춤 코멘트</h2>
+        <p>좋은 성적을 받은 학생들의 공통 패턴과 현재 입력값에 맞춘 개선 전략을 함께 보여줍니다.</p>
+      </div>
+      <div class="top-patterns" id="topPatterns"></div>
+      <article class="analysis-card">
+        <h3>분석 코멘트</h3>
+        <div id="analysisComment"></div>
+      </article>
+      <article class="prompt-card">
+        <h3>ChatGPT에게 물어볼 멘트</h3>
+        <p id="promptText"></p>
+      </article>
+    </section>
+
+    <footer class="controls">
+      <button class="ghost" id="prevBtn" type="button">이전</button>
+      <button id="nextBtn" type="button">다음</button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
