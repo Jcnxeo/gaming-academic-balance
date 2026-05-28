@@ -373,6 +373,8 @@ function makeAnalysis(input, gamingSimilar, academicSimilar, risks, profileName,
 
   $("#promptText").textContent =
 `나는 ${academic.name} 학업 유형이고, ${gaming.name} 게임 유형이야.
+${academic.name}은 ${academic.reason}
+${gaming.name}은 ${gaming.reason}
 내 하루 수면시간은 ${fmt(input.sleepHours)}시간, 게임시간은 ${fmt(input.gamingHours)}시간, 공부시간은 ${fmt(input.studyHours)}시간, 출석률은 ${fmt(input.attendance)}%야.
 자주 하는 게임 장르는 ${input.gamingGenre}야.
 내가 앞으로 학업 성취도를 높이고 싶다면 게임시간, 공부시간, 수면시간, 출석률을 어떤 순서로 조정해야 할지 구체적인 2주 실천 계획으로 제안해줘.`;
